@@ -13,6 +13,7 @@ module.exports = {
   settings: { react: { version: '18.2' } },
   plugins: ['react-refresh'],
   rules: {
+    'prettier/prettier': ['error', prettierOptions],
     "indent": [
       "error",
       4
