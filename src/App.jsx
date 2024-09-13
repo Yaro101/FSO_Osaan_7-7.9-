@@ -1,27 +1,25 @@
 import { useState, useEffect, useRef } from 'react';
 import { useDispatch } from 'react-redux';
-import Blog from './components/Blog';
+
 import blogService from './services/blogs';
 import loginService from './services/login';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { NotificationProvider } from './context/NotificationContext';
 import Notification from './components/Notification';
+import Blog from './components/Blog';
 import LoginForm from './components/LoginForm';
 import BlogForm from './components/BlogForm';
 import Togglable from './components/Togglable';
-import {
-  setNotification,
-  clearNotification,
-} from './reducers/notificationReducer';
+
 import '../index.css';
+
+const queryClient = new QueryClient();
 
 const App = () => {
   const [blogs, setBlogs] = useState([]);
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [user, setUser] = useState(null);
-  // const [newNotification, setNewNotification] = useState({
-  //     message: null,
-  //     type: '',
-  // });
   const [newBlog, setNewBlog] = useState({ title: '', author: '', url: '' });
   const blogFormRef = useRef();
   const dispatch = useDispatch();
@@ -53,19 +51,7 @@ const App = () => {
       setUser(user);
       setUsername('');
       setPassword('');
-      //   setNewNotification({ message: 'Login successful', type: 'success' });
-      //   setTimeout(() => {
-      //     setNewNotification({ message: null, type: '' });
-      //   }, 4000);
-      // } catch (exception) {
-      //   setNewNotification({
-      //     message: 'wrong username or password',
-      //     type: 'error',
-      //   });
-      //   setTimeout(() => {
-      //     setNewNotification({ message: null, type: '' });
-      //   }, 4000);
-      // }
+
       dispatch(
         setNotification({ message: 'Login successful', type: 'success' })
       );
@@ -89,10 +75,7 @@ const App = () => {
     window.localStorage.removeItem('loggedBlogAppUser');
     setUser(null);
     blogService.setToken(null);
-    // setNewNotification({ message: 'Logged out', type: 'success' });
-    // setTimeout(() => {
-    //   setNewNotification({ message: null, type: '' });
-    // }, 4000);
+
     dispatch(setNotification({ message: 'Loggef out', type: 'success' }));
     setTimeout(() => {
       dispatch(clearNotification());
@@ -111,13 +94,6 @@ const App = () => {
       };
       setBlogs(blogs.concat(newBlogObject));
       setNewBlog({ title: '', author: '', url: '' });
-      //   setNewNotification({
-      //     message: `A new blog '${newBlogObject.title}' by ${newBlogObject.author} added`,
-      //     type: 'success',
-      //   });
-      //   setTimeout(() => {
-      //     setNewNotification({ message: null, type: '' });
-      //   }, 5000);
 
       dispatch(
         setNotification({
@@ -131,14 +107,6 @@ const App = () => {
 
       blogFormRef.current.toggleVisibility();
     } catch (exception) {
-      //   setNewNotification({
-      //     message: 'Failed to create a new blog',
-      //     type: 'error',
-      //   });
-      //   setTimeout(() => {
-      //     setNewNotification({ message: null, type: '' });
-      //   }, 4000);
-
       dispatch(
         setNotification({
           message: 'Failed to create a new blog',
@@ -161,13 +129,7 @@ const App = () => {
     try {
       await blogService.remove(blogId);
       setBlogs(blogs.filter((blog) => blog.id !== blogId));
-      //   setNewNotification({
-      //     message: 'Blog removed successfully',
-      //     type: 'success',
-      //   });
-      //   setTimeout(() => {
-      //     setNewNotification({ message: null, type: '' });
-      //   }, 4000);
+
       dispatch(
         setNotification({
           message: 'Blog removed successfully',
@@ -178,13 +140,6 @@ const App = () => {
         dispatch(clearNotification());
       }, 4000);
     } catch (exception) {
-      //   setNewNotification({
-      //     message: 'Failed to remove blog',
-      //     type: 'error',
-      //   });
-      //   setTimeout(() => {
-      //     setNewNotification({ message: null, type: '' });
-      //   }, 4000);
       dispatch(
         setNotification({ message: 'Failed to remove blog', type: 'error' })
       );
@@ -231,22 +186,26 @@ const App = () => {
   };
 
   return (
-    <div>
-      <h1>Blogs</h1>
-      <Notification />
-      {user === null && (
-        <Togglable buttonLabel="login">
-          <LoginForm
-            username={username}
-            password={password}
-            handleUsernameChange={({ target }) => setUsername(target.value)}
-            handlePasswordChange={({ target }) => setPassword(target.value)}
-            handleSubmit={handleLogin}
-          />
-        </Togglable>
-      )}
-      {displayBlogs()}
-    </div>
+    <QueryClientProvider client={queryClient}>
+      <NotificationProvider>
+        <div>
+          <h1>Blogs</h1>
+          <Notification />
+          {user === null && (
+            <Togglable buttonLabel="login">
+              <LoginForm
+                username={username}
+                password={password}
+                handleUsernameChange={({ target }) => setUsername(target.value)}
+                handlePasswordChange={({ target }) => setPassword(target.value)}
+                handleSubmit={handleLogin}
+              />
+            </Togglable>
+          )}
+          {displayBlogs()}
+        </div>
+      </NotificationProvider>
+    </QueryClientProvider>
   );
 };
 
