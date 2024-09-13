@@ -1,0 +1,146 @@
+{
+  "users": [
+    {
+      "username": "mluukkai",
+      "name": "Matti Luukkainen",
+      "blogs": [
+        {
+          "title": "Use Case State of Denial",
+          "author": "Tester Testing",
+          "url": "www.test.fi",
+          "id": "6683b69309a2f4defd7ab4c3"
+        },
+        {
+          "title": "Notification state managed by Redux",
+          "author": "The Notifier",
+          "url": "www.test.fi",
+          "id": "66e17b9f374b2078cd121108"
+        }
+      ],
+      "id": "6683b0de731c63950d2acb79"
+    },
+    {
+      "username": "Timmi",
+      "name": "Timmi the Coding Cat",
+      "blogs": [
+        {
+          "title": "A Catnip JavaScript",
+          "author": "Joku",
+          "url": "www.test.fi",
+          "id": "6683b5f209a2f4defd7ab4b4"
+        }
+      ],
+      "id": "6683b282731c63950d2acb7e"
+    }
+  ],
+  "blogs": [
+    {
+      "title": "React patterns",
+      "author": "Michael Chan",
+      "url": "https://reactpatterns.com/",
+      "likes": 7,
+      "user": {
+        "username": "Timmi",
+        "name": "Timmi the Coding Cat",
+        "id": "6683b282731c63950d2acb7e"
+      },
+      "id": "66829955d04914a1c884c2d1"
+    },
+    {
+      "title": "Go To Statement Considered Harmful",
+      "author": "Edsger W. Dijkstra",
+      "url": "http://www.u.arizona.edu/~rubinson/copyright_violations/Go_To_Considered_Harmful.html",
+      "likes": 5,
+      "user": {
+        "username": "mluukkai",
+        "name": "Matti Luukkainen",
+        "id": "6683b0de731c63950d2acb79"
+      },
+      "id": "66829955d04914a1c884c2d2"
+    },
+    {
+      "title": "Canonical string reduction",
+      "author": "Edsger W. Dijkstra",
+      "url": "http://www.cs.utexas.edu/~EWD/transcriptions/EWD08xx/EWD808.html",
+      "likes": 17,
+      "user": {
+        "username": "Timmi",
+        "name": "Timmi the Coding Cat",
+        "id": "6683b282731c63950d2acb7e"
+      },
+      "id": "66829955d04914a1c884c2d3"
+    },
+    {
+      "title": "First class tests",
+      "author": "Robert C. Martin",
+      "url": "http://blog.cleancoder.com/uncle-bob/2017/05/05/TestDefinitions.htmll",
+      "likes": 11,
+      "user": {
+        "username": "Timmi",
+        "name": "Timmi the Coding Cat",
+        "id": "6683b282731c63950d2acb7e"
+      },
+      "id": "66829955d04914a1c884c2d4"
+    },
+    {
+      "title": "Type wars",
+      "author": "Robert C. Martin",
+      "url": "http://blog.cleancoder.com/uncle-bob/2016/05/01/TypeWars.html",
+      "likes": 3,
+      "user": {
+        "username": "mluukkai",
+        "name": "Matti Luukkainen",
+        "id": "6683b0de731c63950d2acb79"
+      },
+      "id": "66829955d04914a1c884c2d6"
+    },
+    {
+      "title": "TDD harms architecture",
+      "author": "Robert C. Martin",
+      "url": "http://blog.cleancoder.com/uncle-bob/2017/03/03/TDD-Harms-Architecture.html",
+      "likes": 0,
+      "user": {
+        "username": "mluukkai",
+        "name": "Matti Luukkainen",
+        "id": "6683b0de731c63950d2acb79"
+      },
+      "id": "66829955d04914a1c884c2d5"
+    },
+    {
+      "title": "A Catnip JavaScript",
+      "author": "Joku",
+      "url": "www.test.fi",
+      "likes": 15,
+      "user": {
+        "username": "Timmi",
+        "name": "Timmi the Coding Cat",
+        "id": "6683b282731c63950d2acb7e"
+      },
+      "id": "6683b5f209a2f4defd7ab4b4"
+    },
+    {
+      "title": "Use Case State of Denial",
+      "author": "Tester Testing",
+      "url": "www.test.fi",
+      "likes": 8,
+      "user": {
+        "username": "mluukkai",
+        "name": "Matti Luukkainen",
+        "id": "6683b0de731c63950d2acb79"
+      },
+      "id": "6683b69309a2f4defd7ab4c3"
+    },
+    {
+      "title": "Notification state managed by Redux",
+      "author": "The Notifier",
+      "url": "www.test.fi",
+      "likes": 1,
+      "user": {
+        "username": "mluukkai",
+        "name": "Matti Luukkainen",
+        "id": "6683b0de731c63950d2acb79"
+      },
+      "id": "66e17b9f374b2078cd121108"
+    }
+  ]
+}
