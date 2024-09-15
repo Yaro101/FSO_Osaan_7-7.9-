@@ -1,162 +1,153 @@
 import { useState, useEffect, useRef } from 'react';
-import { useDispatch } from 'react-redux';
-
-import blogService from './services/blogs';
-import loginService from './services/login';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { NotificationProvider } from './context/NotificationContext';
-import Notification from './components/Notification';
+import { useNotification } from './context/NotificationContext';
+import { UserProvider, useUser } from './context/UserContext';
 import Blog from './components/Blog';
+import Notification from './components/Notification';
 import LoginForm from './components/LoginForm';
 import BlogForm from './components/BlogForm';
 import Togglable from './components/Togglable';
-
+import blogService from './services/blogs';
+import loginService from './services/login';
+import {
+  useBlogs,
+  useCreateBlog,
+  useDeleteBlog,
+  useUpdateBlog,
+} from './hooks/useBlogs';
 import '../index.css';
 
 const queryClient = new QueryClient();
 
-const App = () => {
-  const [blogs, setBlogs] = useState([]);
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
-  const [user, setUser] = useState(null);
+console.log(blogService.getAll())
+
+const AppContent = () => {
   const [newBlog, setNewBlog] = useState({ title: '', author: '', url: '' });
+  const [username, setUsername] = useState('')
+  const [password, setPassword] = useState('')
   const blogFormRef = useRef();
-  const dispatch = useDispatch();
+  const { notify } = useNotification(); // Use notification context
+  const { user, login, logout } = useUser(); // Get user state and functions from UserContext
 
-  useEffect(() => {
-    blogService.getAll().then((blogs) => setBlogs(blogs));
-  }, []);
+  // Fetch the blogs using the custoim hook
+  // const { data: blogs = [], isLoading } = useBlogs(); // there is no need for isLoading
+  const { data: blogs = [], isError, error} = useBlogs(); // is this correct??
+  // Custom hooks for blog mutation
+  const createBlogMutation = useCreateBlog();
+  const updateBlogMutation = useUpdateBlog();
+  const deleteBlogMutation = useDeleteBlog();
 
+  // Effect to check if user is logged in
   useEffect(() => {
     const loggedUserJSON = window.localStorage.getItem('loggedBlogAppUser');
     if (loggedUserJSON) {
       const user = JSON.parse(loggedUserJSON);
-      setUser(user);
+      login(user);
       blogService.setToken(user.token);
     }
-  }, []);
+  }, []);  // if used with login as the argument [login] it creates an infinite loop!
 
-  const handleLogin = async (event) => {
-    event.preventDefault();
+  useEffect(() => {
+    console.log('Blogs:', blogs); // Check if blogs are being retrieved
+    if (isError) {
+      console.error('Error fetching blogs:', error);
+    }
+  }, [blogs, isError, error]);
 
+  // Login mutation
+  const handleLogin = async (credentials) => {
     try {
-      const user = await loginService.login({
-        username,
-        password,
-      });
-
-      window.localStorage.setItem('loggedBlogAppUser', JSON.stringify(user));
-      blogService.setToken(user.token);
-      setUser(user);
-      setUsername('');
-      setPassword('');
-
-      dispatch(
-        setNotification({ message: 'Login successful', type: 'success' })
+      const userData = await loginService.login(credentials);
+      window.localStorage.setItem(
+        'loggedBlogAppUser',
+        JSON.stringify(userData)
       );
-      setTimeout(() => {
-        dispatch(clearNotification());
-      }, 4000);
-    } catch (exception) {
-      dispatch(
-        setNotification({
-          message: 'wrong username or password',
-          type: 'error',
-        })
-      );
-      setTimeout(() => {
-        dispatch(clearNotification());
-      }, 4000);
+      blogService.setToken(userData.token);
+      login(userData);
+      notify({ message: 'Login successful', type: 'success' });
+    } catch (error) {
+      notify({ message: 'wrong username or password', type: 'error' });
     }
   };
 
   const handleLogout = () => {
     window.localStorage.removeItem('loggedBlogAppUser');
-    setUser(null);
     blogService.setToken(null);
-
-    dispatch(setNotification({ message: 'Loggef out', type: 'success' }));
-    setTimeout(() => {
-      dispatch(clearNotification());
-    }, 4000);
+    logout();
+    notify({ message: 'Logged out', type: 'success' });
   };
 
-  const handleCreateBlog = async (event) => {
+  const handleCreateBlog = (event) => {
     event.preventDefault();
-
-    try {
-      const newBlogObject = await blogService.create(newBlog);
-      newBlogObject.user = {
+    const createdBlog = {
+      ...newBlog, // the blog data from the form
+      user: {
         username: user.username,
         name: user.name,
         id: user.id,
-      };
-      setBlogs(blogs.concat(newBlogObject));
-      setNewBlog({ title: '', author: '', url: '' });
+      },
+    };
 
-      dispatch(
-        setNotification({
-          message: `A new blog '${newBlogObject.title}' by ${newBlogObject.author} added`,
+    createBlogMutation.mutate(createdBlog, {
+      onSuccess: (newBlog) => {
+        setNewBlog({ title: '', author: '', url: '' });
+        notify({
+          message: `A new blog '${newBlog.title}' by ${newBlog.author} added`,
           type: 'success',
-        })
-      );
-      setTimeout(() => {
-        dispatch(clearNotification());
-      }, 5000);
+        });
+        blogFormRef.current.toggleVisibility();
+      },
+      onError: () => {
+        notify({ message: 'Failed to create a new bolg', type: 'error' });
+      },
+    });
+  };
 
-      blogFormRef.current.toggleVisibility();
-    } catch (exception) {
-      dispatch(
-        setNotification({
-          message: 'Failed to create a new blog',
-          type: 'error',
-        })
-      );
-      setTimeout(() => {
-        dispatch(clearNotification());
-      }, 4000);
+  const handleDeleteBlog = (id) => {
+    if (window.confirm('Are you sure you want to delete this blog?')) {
+      deleteBlogMutation.mutate(id, {
+        onSuccess: () => {
+          notify({ message: 'Blog removed successfully', type: 'success' });
+        },
+        onError: () => {
+          notify({ message: 'Failed to remove blog', type: 'error' });
+        },
+      });
     }
   };
 
-  const updateBlogLikes = (updatedBlog) => {
-    setBlogs(
-      blogs.map((blog) => (blog.id === updatedBlog.id ? updatedBlog : blog))
+  const handleUpdateBlog = (blog) => {
+    const updatedBlog = { ...blog, likes: blog.likes + 1 };
+    updateBlogMutation.mutate(
+      { id: blog.id, newBlog: updatedBlog },
+      {
+        onSuccess: () => {
+          notify({
+            message: 'Blog likes updated successfully',
+            type: 'success',
+          });
+        },
+        onError: () => {
+          notify({ message: 'Failed to update blog likes', type: 'error' });
+        },
+      }
     );
   };
 
-  const removeBlog = async (blogId) => {
-    try {
-      await blogService.remove(blogId);
-      setBlogs(blogs.filter((blog) => blog.id !== blogId));
+  const handleUsernameChange = (event) => setUsername(event.target.value)
+  const handlePasswordChange = (event) =>setPassword(event.target.value)
 
-      dispatch(
-        setNotification({
-          message: 'Blog removed successfully',
-          type: 'success',
-        })
-      );
-      setTimeout(() => {
-        dispatch(clearNotification());
-      }, 4000);
-    } catch (exception) {
-      dispatch(
-        setNotification({ message: 'Failed to remove blog', type: 'error' })
-      );
-      setTimeout(() => {
-        dispatch(clearNotification());
-      }, 4000);
-    }
-  };
-
+  // Blog list display with like and delete buttons
   const displayBlogs = () => {
+    console.log('Array of blogs retrieved ready', blogs) // Checking if blogs are correctly retrieved
     const sortedBlogs = [...blogs].sort((a, b) => b.likes - a.likes);
     return (
       <div>
         {user && (
           <p>
             <em>
-              <b>{user.name}</b>
+              <strong>{user.name}</strong>
             </em>{' '}
             logged-in <button onClick={handleLogout}>logout</button>
           </p>
@@ -176,8 +167,8 @@ const App = () => {
             <Blog
               key={blog.id}
               blog={blog}
-              updateBlogLikes={updateBlogLikes}
-              removeBlog={removeBlog}
+              handleLike={() => handleUpdateBlog(blog)}
+              handleDelete={() => handleDeleteBlog(blog.id)}
             />
           ))}
         </div>
@@ -186,25 +177,33 @@ const App = () => {
   };
 
   return (
+    <div>
+      <h1>Blogs</h1>
+      <Notification />
+      {user === null && (
+        <Togglable buttonLabel="login">
+          <LoginForm
+            handleSubmit={() => handleLogin({username, password})}
+            handleUsernameChange={handleUsernameChange}
+            handlePasswordChange={handlePasswordChange}
+            username={username}
+            password={password}
+          />
+        </Togglable>
+      )}
+      {displayBlogs()}
+    </div>
+  );
+};
+
+const App = () => {
+  return (
     <QueryClientProvider client={queryClient}>
-      <NotificationProvider>
-        <div>
-          <h1>Blogs</h1>
-          <Notification />
-          {user === null && (
-            <Togglable buttonLabel="login">
-              <LoginForm
-                username={username}
-                password={password}
-                handleUsernameChange={({ target }) => setUsername(target.value)}
-                handlePasswordChange={({ target }) => setPassword(target.value)}
-                handleSubmit={handleLogin}
-              />
-            </Togglable>
-          )}
-          {displayBlogs()}
-        </div>
-      </NotificationProvider>
+      <UserProvider>
+        <NotificationProvider>
+          <AppContent />
+        </NotificationProvider>
+      </UserProvider>
     </QueryClientProvider>
   );
 };
