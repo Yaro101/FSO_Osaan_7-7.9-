@@ -14,24 +14,10 @@ const Blog = ({ blog }) => {
   const handleLike = () => {
     const updatedBlog = { ...blog, likes: blog.likes + 1 };
     updateBlogMutation.mutate({ id: blog.id, newObject: updatedBlog });
-    // try {
-    //     const returnedBlog = await blogService.update(blog.id, updatedBlog);
-    //     returnedBlog.user = blog.user;
-    //     // console.log('Calling updateBlogLikes');
-    //     updateBlogLikes(returnedBlog);
-    // } catch (exception) {
-    //     console.error('error updating likes', exception);
-    // }
   };
 
   const handleRemove = async () => {
     if (window.confirm(`Remove blog ${blog.title} by ${blog.author}?`)) {
-      //   try {
-      //     await blogService.remove(blog.id);
-      //     removeBlog(blog.id);
-      //   } catch (exception) {
-      //     console.error('Error removing blog:', exception);
-      //   }
       deleteBlogMutation.mutate(blog.id);
     }
   };
