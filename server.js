@@ -1,17 +1,27 @@
 const jsonServer = require('json-server')
-const corsMiddleware = require('./corsMiddleware')
+const cors = require('cors')
+const path = require('path')
+
 const server = jsonServer.create()
-const router = jsonServer.router('db.json')
+const router = jsonServer.router(path.join(__dirname, 'db.json'))
 const middlewares = jsonServer.defaults()
 
-// Default middlwares (logger, static, cors and no-cache)
-server.use(middlewares)
+const PORT = 3001
+
+const corsOptions = {
+    origin: 'http://localhost:5173',
+    methods: 'GET,POST,PUT,DELETE,PATCH,OPTIONS',
+    allowedHeaders: ['Content-Type', 'Authorization'],
+  };
+
+server.use(cors(corsOptions))
 // Using the CORS middlware
-server.use(corsMiddleware)
+server.use(middlewares)
+server.use(jsonServer.bodyParser)
 // Use default router
 server.use(router)
 
 // Start the server 
 server.listen(PORT, ()=>{
-    console.log(`JSON Server is running on port 3001 ${PORT}`)
+    console.log(`JSON Server is running on ${PORT}`)
 })
