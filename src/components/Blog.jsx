@@ -13,7 +13,9 @@ const Blog = ({ blog }) => {
 
   const handleLike = () => {
     const updatedBlog = { ...blog, likes: blog.likes + 1 };
-    updateBlogMutation.mutate({ id: blog.id, newObject: updatedBlog });
+    updateBlogMutation.mutate(
+        { id: blog.id, newBlog: updatedBlog }
+    );
   };
 
   const handleRemove = async () => {
