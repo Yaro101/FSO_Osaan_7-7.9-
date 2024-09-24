@@ -134,7 +134,7 @@
       "title": "Notification state managed by Redux",
       "author": "The Notifier",
       "url": "www.test.fi",
-      "likes": 1,
+      "likes": 2,
       "user": {
         "username": "mluukkai",
         "name": "Matti Luukkainen",
@@ -154,18 +154,8 @@
       "author": "The Notifier",
       "url": "www.test.fi",
       "user": {},
-      "id": "TS723Ao"
-    },
-    {
-      "title": "Mimic notify",
-      "author": "The Notifier",
-      "url": "www.test.fi",
-      "user": {
-        "username": "mluukkai",
-        "name": "Matti Luukkainen"
-      },
-      "id": "loSb-Wo",
-      "likes": 1
+      "id": "TS723Ao",
+      "likes": 4
     },
     {
       "title": "The undefined",
@@ -177,17 +167,6 @@
       },
       "id": "hJzwUN0",
       "likes": 3
-    },
-    {
-      "title": "Test'n notify",
-      "author": "Tester Testing",
-      "url": "www.test.fi",
-      "user": {
-        "username": "mluukkai",
-        "name": "Matti Luukkainen"
-      },
-      "id": "X202bLD",
-      "likes": 2
     },
     {
       "title": "CSS color name always in quotes",
