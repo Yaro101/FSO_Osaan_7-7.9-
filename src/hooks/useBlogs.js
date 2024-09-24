@@ -22,7 +22,7 @@ export const useCreateBlog = () => {
 export const useUpdateBlog = () => {
     const queryClient = useQueryClient()
     return useMutation({
-        mutationFn: blogService.update,
+        mutationFn: ({ id, newBlog }) => blogService.update(id, newBlog),
         onSuccess: () => {
             queryClient.invalidateQueries({ queryKey: ['blogs'] })
         }
