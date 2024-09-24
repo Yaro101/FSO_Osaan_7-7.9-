@@ -98,6 +98,7 @@ const AppContent = () => {
     event.preventDefault();
     const createdBlog = {
       ...newBlog, // the blog data from the form
+      likes: 0,
       user: {
         username: user.username,
         name: user.name,
