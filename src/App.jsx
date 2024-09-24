@@ -125,7 +125,9 @@ const AppContent = () => {
     if (window.confirm('Are you sure you want to delete this blog?')) {
       deleteBlogMutation.mutate(id, {
         onSuccess: () => {
+          console.log('Deleting blog...')
           notify({ message: 'Blog removed successfully', type: 'success' });
+          queryClient.invalidateQueries('blogs');
         },
         onError: () => {
           notify({ message: 'Failed to remove blog', type: 'error' });

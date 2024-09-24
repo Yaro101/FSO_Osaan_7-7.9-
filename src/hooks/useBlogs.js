@@ -24,6 +24,7 @@ export const useUpdateBlog = () => {
     return useMutation({
         mutationFn: ({ id, newBlog }) => blogService.update(id, newBlog),
         onSuccess: () => {
+            console.log('Blog updated successfully')
             queryClient.invalidateQueries({ queryKey: ['blogs'] })
         }
     })
@@ -34,6 +35,7 @@ export const useDeleteBlog = () => {
     return useMutation({
         mutationFn: blogService.remove,
         onSuccess: () => {
+            // console.log('Blog deleted successfully', data)
             queryClient.invalidateQueries({ queryKey: ['blogs'] })
         }
     })

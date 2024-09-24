@@ -62,7 +62,7 @@
       "title": "Canonical string reduction",
       "author": "Edsger W. Dijkstra",
       "url": "http://www.cs.utexas.edu/~EWD/transcriptions/EWD08xx/EWD808.html",
-      "likes": 17,
+      "likes": 18,
       "user": {
         "username": "Timmi",
         "name": "Timmi the Coding Cat",
@@ -157,16 +157,6 @@
       "id": "TS723Ao"
     },
     {
-      "title": "If it works do not touch it but try to understand why",
-      "author": "Tester Testing",
-      "url": "www.test.fi",
-      "user": {
-        "username": "mluukkai",
-        "name": "Matti Luukkainen"
-      },
-      "id": "7mUC1qx"
-    },
-    {
       "title": "Mimic notify",
       "author": "The Notifier",
       "url": "www.test.fi",
@@ -220,17 +210,6 @@
         "name": "Matti Luukkainen"
       },
       "id": "8pNJLHY"
-    },
-    {
-      "title": "Testing Likes",
-      "author": "Tester Testing",
-      "url": "www.test.fi",
-      "likes": 4,
-      "user": {
-        "username": "mluukkai",
-        "name": "Matti Luukkainen"
-      },
-      "id": "EUI2PQA"
     }
   ]
 }
