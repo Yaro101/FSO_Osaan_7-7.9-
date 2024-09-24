@@ -2,7 +2,7 @@ import { useNotification } from '../context/NotificationContext';
 
 const Notification = () => {
   const { notification } = useNotification();
-  console.log('Notification component recieved:', notification)
+  // console.log('Notification component recieved:', notification)
   if (!notification.message) return null;
 
   const style = {
