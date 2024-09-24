@@ -98,7 +98,7 @@
       "title": "TDD harms architecture",
       "author": "Robert C. Martin",
       "url": "http://blog.cleancoder.com/uncle-bob/2017/03/03/TDD-Harms-Architecture.html",
-      "likes": 0,
+      "likes": 1,
       "user": {
         "username": "mluukkai",
         "name": "Matti Luukkainen",
@@ -165,6 +165,72 @@
         "name": "Matti Luukkainen"
       },
       "id": "7mUC1qx"
+    },
+    {
+      "title": "Mimic notify",
+      "author": "The Notifier",
+      "url": "www.test.fi",
+      "user": {
+        "username": "mluukkai",
+        "name": "Matti Luukkainen"
+      },
+      "id": "loSb-Wo",
+      "likes": 1
+    },
+    {
+      "title": "The undefined",
+      "author": "The Notifier",
+      "url": "www.test.fi",
+      "user": {
+        "username": "mluukkai",
+        "name": "Matti Luukkainen"
+      },
+      "id": "hJzwUN0",
+      "likes": 3
+    },
+    {
+      "title": "Test'n notify",
+      "author": "Tester Testing",
+      "url": "www.test.fi",
+      "user": {
+        "username": "mluukkai",
+        "name": "Matti Luukkainen"
+      },
+      "id": "X202bLD",
+      "likes": 2
+    },
+    {
+      "title": "CSS color name always in quotes",
+      "author": "The Notifier",
+      "url": "www.test.fi",
+      "user": {
+        "username": "mluukkai",
+        "name": "Matti Luukkainen"
+      },
+      "id": "7GDJ9RL",
+      "likes": 3
+    },
+    {
+      "title": "Just another test Testing Tester",
+      "author": "The Notifier",
+      "url": "www.test.fi",
+      "likes": 1,
+      "user": {
+        "username": "mluukkai",
+        "name": "Matti Luukkainen"
+      },
+      "id": "8pNJLHY"
+    },
+    {
+      "title": "Testing Likes",
+      "author": "Tester Testing",
+      "url": "www.test.fi",
+      "likes": 4,
+      "user": {
+        "username": "mluukkai",
+        "name": "Matti Luukkainen"
+      },
+      "id": "EUI2PQA"
     }
   ]
 }
