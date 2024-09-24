@@ -1,7 +1,8 @@
 import { useNotification } from '../context/NotificationContext';
 
 const Notification = () => {
-  const notification = useNotification();
+  const { notification } = useNotification();
+  console.log(`Notification message: ${notification.message}`);
 
   if (!notification.message) return null;
 
