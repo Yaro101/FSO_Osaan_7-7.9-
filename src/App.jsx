@@ -12,6 +12,7 @@ import LoginForm from './components/LoginForm';
 import BlogForm from './components/BlogForm';
 import Togglable from './components/Togglable';
 import blogService from './services/blogs';
+import userService from './services/UserBlogs'
 import loginService from './services/login';
 import {
   useBlogs,
@@ -96,6 +97,7 @@ const AppContent = () => {
 
   const handleCreateBlog = (event) => {
     event.preventDefault();
+    console.log('Current user:', user);
     const createdBlog = {
       ...newBlog, // the blog data from the form
       likes: 0,
@@ -107,13 +109,41 @@ const AppContent = () => {
     };
 
     createBlogMutation.mutate(createdBlog, {
-      onSuccess: (newBlog) => {
+      onSuccess: async (newBlog) => {
         setNewBlog({ title: '', author: '', url: '' });
+        console.log('Blog created successfully:', newBlog);
         notify({
           message: `A new blog '${newBlog.title}' by ${newBlog.author} added`,
           type: 'success',
         });
+        // Close the blog creation form
         blogFormRef.current.toggleVisibility();
+
+        // Updating the user's blog in the backend/db
+        const updateUserBlogs = {
+          id: user.id,  // User id
+          blog: newBlog  // Newly created blog
+        }
+
+        await userService.updateUserBlogsService(updateUserBlogs)
+
+        // Updating the user's blogs in the backend/db
+        const updateUser = {
+          ...user,
+          blogs: [...user.blogs, newBlog], // Adding the new blog to the user's blogs list
+        };
+
+        // Updating the user in localStorage
+        window.localStorage.setItem(
+          'loggedAppUser',
+          JSON.stringify(updateUser)
+        );
+
+        // Updating user context
+        login(updateUser);
+
+        // refresh the blog list
+        queryClient.invalidateQueries('blogs');
       },
       onError: () => {
         notify({ message: 'Failed to create a new bolg', type: 'error' });
@@ -125,7 +155,7 @@ const AppContent = () => {
     if (window.confirm('Are you sure you want to delete this blog?')) {
       deleteBlogMutation.mutate(id, {
         onSuccess: () => {
-          console.log('Deleting blog...')
+          console.log('Deleting blog...');
           notify({ message: 'Blog removed successfully', type: 'success' });
           queryClient.invalidateQueries('blogs');
         },

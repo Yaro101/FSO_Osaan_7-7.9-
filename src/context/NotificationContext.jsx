@@ -24,7 +24,7 @@ export const NotificationProvider = ({ children }) => {
       type: 'SET_NOTIFICATION',
       payload: { message, type },
     });
-    // console.log(`notify msg: ${message} and type: ${type}`);
+    console.log(`notify msg: ${message} and type: ${type}`);
     setTimeout(() => {
       notificationDispatch({ type: 'CLEAR_NOTIFICATION' });
     }, 5000);

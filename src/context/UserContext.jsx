@@ -21,15 +21,6 @@ const userReducer = (state, action) => {
 export const UserProvider = ({ children }) => {
   const [state, dispatch] = useReducer(userReducer, { user: null });
 
-//   useEffect(() => {
-//     const storedUser = JSON.parse(
-//       window.localStorage.getItem('loggedBlogAppUser')
-//     );
-//     if (storedUser) {
-//       dispatch({ type: 'LOGIN', payload: storedUser });
-//     }
-//   }, []);
-
   return (
     <UserStateContext.Provider value={state.user}>
       <UserDispatchContext.Provider value={dispatch}>

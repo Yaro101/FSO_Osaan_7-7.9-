@@ -8,13 +8,36 @@
           "title": "Use Case State of Denial",
           "author": "Tester Testing",
           "url": "www.test.fi",
+          "likes": 3,
           "id": "6683b69309a2f4defd7ab4c3"
+        },
+        {
+          "title": "Go To Statement Considered Harmful",
+          "author": "Edsger W. Dijkstra",
+          "url": "http://www.u.arizona.edu/~rubinson/copyright_violations/Go_To_Considered_Harmful.html",
+          "likes": 5,
+          "id": "66829955d04914a1c884c2d2"
         },
         {
           "title": "Notification state managed by Redux",
           "author": "The Notifier",
           "url": "www.test.fi",
+          "likes": 1,
           "id": "66e17b9f374b2078cd121108"
+        },
+        {
+          "title": "Type wars",
+          "author": "Robert C. Martin",
+          "url": "http://blog.cleancoder.com/uncle-bob/2016/05/01/TypeWars.html",
+          "likes": 3,
+          "id": "66829955d04914a1c884c2d6"
+        },
+        {
+          "title": "TDD harms architecture",
+          "author": "Robert C. Martin",
+          "url": "http://blog.cleancoder.com/uncle-bob/2017/03/03/TDD-Harms-Architecture.html",
+          "likes": 1,
+          "id": "66829955d04914a1c884c2d5"
         }
       ],
       "id": "6683b0de731c63950d2acb79"
@@ -27,7 +50,48 @@
           "title": "A Catnip JavaScript",
           "author": "Joku",
           "url": "www.test.fi",
+          "likes": 7,
           "id": "6683b5f209a2f4defd7ab4b4"
+        },
+        {
+          "title": "React patterns",
+          "author": "Michael Chan",
+          "url": "https://reactpatterns.com/",
+          "likes": 7,
+          "id": "66829955d04914a1c884c2d1"
+        },
+        {
+          "title": "Canonical string reduction",
+          "author": "Edsger W. Dijkstra",
+          "url": "http://www.cs.utexas.edu/~EWD/transcriptions/EWD08xx/EWD808.html",
+          "likes": 18,
+          "id": "66829955d04914a1c884c2d3"
+        },
+        {
+          "title": "First class tests",
+          "author": "Robert C. Martin",
+          "url": "http://blog.cleancoder.com/uncle-bob/2017/05/05/TestDefinitions.htmll",
+          "likes": 11,
+          "id": "66829955d04914a1c884c2d4"
+        },
+        {
+          "title": "A Catnip JavaScript",
+          "author": "Joku",
+          "url": "www.test.fi",
+          "likes": 15,
+          "id": "6683b5f209a2f4defd7ab4b4"
+        },
+        {
+          "title": "OttoCat 2.0",
+          "author": "Joku",
+          "url": "www.test.fi",
+          "likes": 0,
+          "user": {
+            "username": "Timmi",
+            "name": "Timmi the Coding Cat",
+            "id": "6683b282731c63950d2acb7e"
+          },
+          "id": "wSqzaV3"
         }
       ],
       "id": "6683b282731c63950d2acb7e"
@@ -98,7 +162,7 @@
       "title": "TDD harms architecture",
       "author": "Robert C. Martin",
       "url": "http://blog.cleancoder.com/uncle-bob/2017/03/03/TDD-Harms-Architecture.html",
-      "likes": 1,
+      "likes": 2,
       "user": {
         "username": "mluukkai",
         "name": "Matti Luukkainen",
@@ -122,7 +186,7 @@
       "title": "Use Case State of Denial",
       "author": "Tester Testing",
       "url": "www.test.fi",
-      "likes": 8,
+      "likes": 9,
       "user": {
         "username": "mluukkai",
         "name": "Matti Luukkainen",
@@ -131,64 +195,28 @@
       "id": "6683b69309a2f4defd7ab4c3"
     },
     {
-      "title": "Notification state managed by Redux",
-      "author": "The Notifier",
-      "url": "www.test.fi",
-      "likes": 2,
-      "user": {
-        "username": "mluukkai",
-        "name": "Matti Luukkainen",
-        "id": "6683b0de731c63950d2acb79"
-      },
-      "id": "66e17b9f374b2078cd121108"
-    },
-    {
-      "title": "Catnip for dummies",
-      "author": "Milo",
-      "url": "www.test.fi",
-      "user": {},
-      "id": "Ef8QSKm"
-    },
-    {
-      "title": "Never trust the l@test version release",
-      "author": "The Notifier",
-      "url": "www.test.fi",
-      "user": {},
-      "id": "TS723Ao",
-      "likes": 4
-    },
-    {
-      "title": "The undefined",
-      "author": "The Notifier",
-      "url": "www.test.fi",
-      "user": {
-        "username": "mluukkai",
-        "name": "Matti Luukkainen"
-      },
-      "id": "hJzwUN0",
-      "likes": 3
-    },
-    {
       "title": "CSS color name always in quotes",
       "author": "The Notifier",
       "url": "www.test.fi",
       "user": {
         "username": "mluukkai",
-        "name": "Matti Luukkainen"
+        "name": "Matti Luukkainen",
+        "id": "6683b0de731c63950d2acb79"
       },
       "id": "7GDJ9RL",
       "likes": 3
     },
     {
-      "title": "Just another test Testing Tester",
-      "author": "The Notifier",
+      "title": "OttoCat 2.0",
+      "author": "Joku",
       "url": "www.test.fi",
-      "likes": 1,
+      "likes": 2,
       "user": {
-        "username": "mluukkai",
-        "name": "Matti Luukkainen"
+        "username": "Timmi",
+        "name": "Timmi the Coding Cat",
+        "id": "6683b282731c63950d2acb7e"
       },
-      "id": "8pNJLHY"
+      "id": "wSqzaV3"
     }
   ]
 }

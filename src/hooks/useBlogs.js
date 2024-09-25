@@ -34,8 +34,8 @@ export const useDeleteBlog = () => {
     const queryClient = useQueryClient()
     return useMutation({
         mutationFn: blogService.remove,
-        onSuccess: () => {
-            // console.log('Blog deleted successfully', data)
+        onSuccess: (data) => {
+            console.log('Blog deleted successfully', data)
             queryClient.invalidateQueries({ queryKey: ['blogs'] })
         }
     })
