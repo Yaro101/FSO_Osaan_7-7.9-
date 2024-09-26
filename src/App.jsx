@@ -6,12 +6,13 @@ import {
   useNotification,
 } from './context/NotificationContext';
 import { UserProvider, useUser } from './context/UserContext';
-import Blog from './components/Blog';
+// import Blog from './components/Blog';
 import Notification from './components/Notification';
-import LoginForm from './components/LoginForm';
-import BlogForm from './components/BlogForm';
-import Togglable from './components/Togglable';
+// import LoginForm from './components/LoginForm';
+// import BlogForm from './components/BlogForm';
+// import Togglable from './components/Togglable';
 import LoginStatus from './components/LoginStatus'
+import DisplayBlogs from './components/DisplayBlogs';
 import blogService from './services/blogs';
 import userService from './services/UserBlogs'
 import loginService from './services/login';
@@ -185,48 +186,12 @@ const AppContent = () => {
     );
   };
 
-  // Blog list display with like and delete buttons
-  const displayBlogs = () => {
-    // console.log('Array of blogs retrieved ready', blogs) // Checking if blogs are correctly retrieved
-    const sortedBlogs = [...blogs].sort((a, b) => b.likes - a.likes);
-
-    if (isLoading) {
-      return <div>Loading blogs...</div>; // Loading state
-    }
-
-    return (
-      <div>
-        
-        {user && (
-          <Togglable buttonLabel="new blog" ref={blogFormRef}>
-            <BlogForm
-              onSubmit={handleCreateBlog}
-              newBlog={newBlog}
-              setNewBlog={setNewBlog}
-            />
-          </Togglable>
-        )}
-        <div>
-          <br />
-          {sortedBlogs.map((blog) => (
-            <Blog
-              key={blog.id}
-              blog={blog}
-              handleLike={() => handleUpdateBlog(blog)}
-              handleDelete={() => handleDeleteBlog(blog.id)}
-            />
-          ))}
-        </div>
-      </div>
-    );
-  };
-
   return (
     <div>
       <h1>Blogs</h1>
       <Notification />
       <LoginStatus handleLogout={handleLogout} handleLogin={handleLogin}/>
-      {displayBlogs()}
+      <DisplayBlogs user={user} blogs={blogs} isLoading={isLoading} newBlog={newBlog} setNewBlog={setNewBlog} handleCreateBlog={handleCreateBlog} handleUpdateBlog={handleUpdateBlog} handleDeleteBlog={handleDeleteBlog} />
     </div>
   );
 };
