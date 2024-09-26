@@ -11,6 +11,7 @@ import Notification from './components/Notification';
 import LoginForm from './components/LoginForm';
 import BlogForm from './components/BlogForm';
 import Togglable from './components/Togglable';
+import LoginStatus from './components/LoginStatus'
 import blogService from './services/blogs';
 import userService from './services/UserBlogs'
 import loginService from './services/login';
@@ -184,12 +185,8 @@ const AppContent = () => {
     );
   };
 
-  const handleUsernameChange = (event) => setUsername(event.target.value);
-  const handlePasswordChange = (event) => setPassword(event.target.value);
-
   // Blog list display with like and delete buttons
   const displayBlogs = () => {
-    // console.log('User in displayBlog clg:', user);
     // console.log('Array of blogs retrieved ready', blogs) // Checking if blogs are correctly retrieved
     const sortedBlogs = [...blogs].sort((a, b) => b.likes - a.likes);
 
@@ -199,14 +196,7 @@ const AppContent = () => {
 
     return (
       <div>
-        {user && (
-          <p>
-            <em>
-              <strong>{user.name}</strong>
-            </em>{' '}
-            logged-in <button onClick={handleLogout}>logout</button>
-          </p>
-        )}
+        
         {user && (
           <Togglable buttonLabel="new blog" ref={blogFormRef}>
             <BlogForm
@@ -235,17 +225,7 @@ const AppContent = () => {
     <div>
       <h1>Blogs</h1>
       <Notification />
-      {user === null && (
-        <Togglable buttonLabel="login">
-          <LoginForm
-            handleSubmit={handleLogin}
-            handleUsernameChange={handleUsernameChange}
-            handlePasswordChange={handlePasswordChange}
-            username={username}
-            password={password}
-          />
-        </Togglable>
-      )}
+      <LoginStatus handleLogout={handleLogout} handleLogin={handleLogin}/>
       {displayBlogs()}
     </div>
   );
