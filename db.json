@@ -12,6 +12,13 @@
           "id": "6683b69309a2f4defd7ab4c3"
         },
         {
+          "title": "CSS color name always in quotes",
+          "author": "The Notifier",
+          "url": "www.test.fi",
+          "likes": 3,
+          "id": "7GDJ9RL"
+        },
+        {
           "title": "Go To Statement Considered Harmful",
           "author": "Edsger W. Dijkstra",
           "url": "http://www.u.arizona.edu/~rubinson/copyright_violations/Go_To_Considered_Harmful.html",
@@ -40,8 +47,8 @@
           "id": "66829955d04914a1c884c2d5"
         },
         {
-          "title": "adsgsdg",
-          "author": "The Notifier",
+          "title": "Final testing BlogAdd",
+          "author": "Joku",
           "url": "www.test.fi",
           "likes": 0,
           "user": {
@@ -49,19 +56,7 @@
             "name": "Matti Luukkainen",
             "id": "6683b0de731c63950d2acb79"
           },
-          "id": "_0_y1pE"
-        },
-        {
-          "title": "sdfljdsöi",
-          "author": "Tester Testing",
-          "url": "www.test.fi",
-          "likes": 0,
-          "user": {
-            "username": "mluukkai",
-            "name": "Matti Luukkainen",
-            "id": "6683b0de731c63950d2acb79"
-          },
-          "id": "tEcinTV"
+          "id": "ZPc-xQ8"
         }
       ],
       "id": "6683b0de731c63950d2acb79"
@@ -113,7 +108,10 @@
         "name": "Timmi the Coding Cat",
         "id": "6683b282731c63950d2acb7e"
       },
-      "id": "66829955d04914a1c884c2d1"
+      "id": "66829955d04914a1c884c2d1",
+      "comments": [
+        "Testing comment"
+      ]
     },
     {
       "title": "Go To Statement Considered Harmful",
@@ -125,19 +123,39 @@
         "name": "Matti Luukkainen",
         "id": "6683b0de731c63950d2acb79"
       },
-      "id": "66829955d04914a1c884c2d2"
+      "id": "66829955d04914a1c884c2d2",
+      "comments": [
+        "Go to comment",
+        "Comments are too harmfull"
+      ]
+    },
+    {
+      "title": "Notification state managed by Redux",
+      "author": "The Notifier",
+      "url": "www.test.fi",
+      "likes": 1,
+      "user": {
+        "username": "mluukkai",
+        "name": "Matti Luukkainen",
+        "id": "6683b0de731c63950d2acb79"
+      },
+      "id": "66e17b9f374b2078cd121108"
     },
     {
       "title": "Canonical string reduction",
       "author": "Edsger W. Dijkstra",
       "url": "http://www.cs.utexas.edu/~EWD/transcriptions/EWD08xx/EWD808.html",
-      "likes": 18,
+      "likes": 19,
       "user": {
         "username": "Timmi",
         "name": "Timmi the Coding Cat",
         "id": "6683b282731c63950d2acb7e"
       },
-      "id": "66829955d04914a1c884c2d3"
+      "id": "66829955d04914a1c884c2d3",
+      "comments": [
+        "good one",
+        "Interesting!"
+      ]
     },
     {
       "title": "First class tests",
@@ -149,7 +167,10 @@
         "name": "Timmi the Coding Cat",
         "id": "6683b282731c63950d2acb7e"
       },
-      "id": "66829955d04914a1c884c2d4"
+      "id": "66829955d04914a1c884c2d4",
+      "comments": [
+        "First class comment"
+      ]
     },
     {
       "title": "Type wars",
@@ -185,7 +206,10 @@
         "name": "Timmi the Coding Cat",
         "id": "6683b282731c63950d2acb7e"
       },
-      "id": "6683b5f209a2f4defd7ab4b4"
+      "id": "6683b5f209a2f4defd7ab4b4",
+      "comments": [
+        "I guess!!"
+      ]
     },
     {
       "title": "Use Case State of Denial",
@@ -197,7 +221,12 @@
         "name": "Matti Luukkainen",
         "id": "6683b0de731c63950d2acb79"
       },
-      "id": "6683b69309a2f4defd7ab4c3"
+      "id": "6683b69309a2f4defd7ab4c3",
+      "comments": [
+        "Testing comment",
+        "Second comment",
+        "Another comment"
+      ]
     },
     {
       "title": "CSS color name always in quotes",
@@ -209,7 +238,25 @@
         "id": "6683b0de731c63950d2acb79"
       },
       "id": "7GDJ9RL",
-      "likes": 3
+      "likes": 3,
+      "comments": [
+        "Css sux"
+      ]
+    },
+    {
+      "title": "Final testing BlogAdd",
+      "author": "Joku",
+      "url": "www.test.fi",
+      "likes": 1,
+      "user": {
+        "username": "mluukkai",
+        "name": "Matti Luukkainen",
+        "id": "6683b0de731c63950d2acb79"
+      },
+      "id": "ZPc-xQ8",
+      "comments": [
+        "Testing comment on added blog"
+      ]
     }
   ]
 }

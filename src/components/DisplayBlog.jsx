@@ -81,12 +81,6 @@ const DisplayBlog = () => {
 
         <h3>Comments</h3>
 
-        <ul>
-          {blog.comments?.map((comment, index) => (
-            <li key={index}>{comment}</li>
-          ))}
-        </ul>
-
         <form onSubmit={handleAddComment}>
           <input
             type="text"
@@ -96,6 +90,12 @@ const DisplayBlog = () => {
           />
           <button type="submit">Add comment</button>
         </form>
+
+        <ul>
+          {blog.comments?.map((comment, index) => (
+            <li key={index}>{comment}</li>
+          ))}
+        </ul>
       </div>
     </div>
   );
