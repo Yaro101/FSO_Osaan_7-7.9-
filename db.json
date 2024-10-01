@@ -38,6 +38,30 @@
           "url": "http://blog.cleancoder.com/uncle-bob/2017/03/03/TDD-Harms-Architecture.html",
           "likes": 1,
           "id": "66829955d04914a1c884c2d5"
+        },
+        {
+          "title": "adsgsdg",
+          "author": "The Notifier",
+          "url": "www.test.fi",
+          "likes": 0,
+          "user": {
+            "username": "mluukkai",
+            "name": "Matti Luukkainen",
+            "id": "6683b0de731c63950d2acb79"
+          },
+          "id": "_0_y1pE"
+        },
+        {
+          "title": "sdfljdsöi",
+          "author": "Tester Testing",
+          "url": "www.test.fi",
+          "likes": 0,
+          "user": {
+            "username": "mluukkai",
+            "name": "Matti Luukkainen",
+            "id": "6683b0de731c63950d2acb79"
+          },
+          "id": "tEcinTV"
         }
       ],
       "id": "6683b0de731c63950d2acb79"
@@ -73,25 +97,6 @@
           "url": "http://blog.cleancoder.com/uncle-bob/2017/05/05/TestDefinitions.htmll",
           "likes": 11,
           "id": "66829955d04914a1c884c2d4"
-        },
-        {
-          "title": "A Catnip JavaScript",
-          "author": "Joku",
-          "url": "www.test.fi",
-          "likes": 15,
-          "id": "6683b5f209a2f4defd7ab4b4"
-        },
-        {
-          "title": "OttoCat 2.0",
-          "author": "Joku",
-          "url": "www.test.fi",
-          "likes": 0,
-          "user": {
-            "username": "Timmi",
-            "name": "Timmi the Coding Cat",
-            "id": "6683b282731c63950d2acb7e"
-          },
-          "id": "wSqzaV3"
         }
       ],
       "id": "6683b282731c63950d2acb7e"
@@ -205,18 +210,6 @@
       },
       "id": "7GDJ9RL",
       "likes": 3
-    },
-    {
-      "title": "OttoCat 2.0",
-      "author": "Joku",
-      "url": "www.test.fi",
-      "likes": 2,
-      "user": {
-        "username": "Timmi",
-        "name": "Timmi the Coding Cat",
-        "id": "6683b282731c63950d2acb7e"
-      },
-      "id": "wSqzaV3"
     }
   ]
 }

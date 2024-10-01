@@ -3,6 +3,11 @@
   /* font-size: 1em; */
 }
 
+:root {
+  --primary: #e95414bb;
+  --secondary: #6175b8;
+}
+
 h1 {
   font-size: 3em;
   line-height: 1.2em;
@@ -29,4 +34,45 @@ button:hover {
 button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
+}
+
+/* Navbar */
+header nav {
+  display: flex;
+  height: auto;
+  gap: 16px;
+  justify-content: end;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+header nav h1 {
+  font-size: 2em;
+  /* margin-top: auto; */
+  margin-right: auto;
+  border-bottom: 3px solid var(--primary);
+}
+header nav a {
+  text-decoration: none;
+  padding: 8px;
+  border-radius: 4px;  
+}
+header nav a.active {
+  background: var(--primary);
+}
+
+header nav .loginStatus {
+  padding: 8px;
+  margin-top: auto;
+}
+
+.users-table{
+  padding: 15px;
+}
+
+footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 1.6em;
 }
