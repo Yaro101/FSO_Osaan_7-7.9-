@@ -7,8 +7,8 @@ const Layout = () => {
       <header>
         <nav>
           <h1>Blog App</h1>
-          <NavLink to="/blogs">Blogs</NavLink>
-          <NavLink to="/users">Users</NavLink>
+          <NavLink to="/blogs"><strong>Blogs</strong></NavLink>
+          <NavLink to="/users"><strong>Users</strong></NavLink>
           <LoginStatus />
         </nav>
       </header>
