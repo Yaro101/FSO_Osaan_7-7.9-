@@ -24,10 +24,9 @@ const Blog = ({ blog }) => {
   // };
 
   const blogStyle = {
-    padding: 10,
+    padding: 6,
     border: 'solid grey',
-    borderWidth: 1,
-    marginBottom: 5,
+    borderWidth: 2,
   };
 
   // const loggedUser = JSON.parse(localStorage.getItem('loggedBlogAppUser'));
