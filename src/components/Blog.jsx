@@ -1,28 +1,27 @@
 import { useState } from 'react';
 import { useUpdateBlog, useDeleteBlog } from '../hooks/useBlogs';
+import { NavLink } from 'react-router-dom';
 
 const Blog = ({ blog }) => {
-  const [visible, setVisible] = useState(false);
+  // const [visible, setVisible] = useState(false);
 
-  const toggleVisibility = () => {
-    setVisible(!visible);
-  };
+  // const toggleVisibility = () => {
+  //   setVisible(!visible);
+  // };
 
-  const updateBlogMutation = useUpdateBlog();
-  const deleteBlogMutation = useDeleteBlog();
+  // const updateBlogMutation = useUpdateBlog();
+  // const deleteBlogMutation = useDeleteBlog();
 
-  const handleLike = () => {
-    const updatedBlog = { ...blog, likes: blog.likes + 1 };
-    updateBlogMutation.mutate(
-        { id: blog.id, newBlog: updatedBlog }
-    );
-  };
+  // const handleLike = () => {
+  //   const updatedBlog = { ...blog, likes: blog.likes + 1 };
+  //   updateBlogMutation.mutate({ id: blog.id, newBlog: updatedBlog });
+  // };
 
-  const handleRemove = async () => {
-    if (window.confirm(`Remove blog ${blog.title} by ${blog.author}?`)) {
-      deleteBlogMutation.mutate(blog.id);
-    }
-  };
+  // const handleRemove = async () => {
+  //   if (window.confirm(`Remove blog ${blog.title} by ${blog.author}?`)) {
+  //     deleteBlogMutation.mutate(blog.id);
+  //   }
+  // };
 
   const blogStyle = {
     padding: 10,
@@ -31,17 +30,19 @@ const Blog = ({ blog }) => {
     marginBottom: 5,
   };
 
-  const loggedUser = JSON.parse(localStorage.getItem('loggedBlogAppUser'));
+  // const loggedUser = JSON.parse(localStorage.getItem('loggedBlogAppUser'));
 
   return (
     <div className="blog" style={blogStyle}>
       <div>
-        {blog.title} {blog.author}{' '}
-        <button className="show-hide-btn" onClick={toggleVisibility}>
+        <NavLink to={`/blogs/${blog.id}`}>
+          {blog.title} {blog.author}{' '}
+        </NavLink>
+        {/* <button className="show-hide-btn" onClick={toggleVisibility}>
           {visible ? 'hide' : 'show'}
-        </button>
+        </button> */}
       </div>
-      {visible && (
+      {/* {visible && (
         <div>
           <p>{blog.url}</p>
           <div>
@@ -55,7 +56,7 @@ const Blog = ({ blog }) => {
             <button onClick={handleRemove}>remove</button>
           )}
         </div>
-      )}
+      )} */}
     </div>
   );
 };
