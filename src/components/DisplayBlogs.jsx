@@ -14,6 +14,7 @@ import blogService from '../services/blogs';
 import userService from '../services/UserBlogs'; // ***
 import { QueryClient } from '@tanstack/react-query'; // ***
 import { useNotification } from '../context/NotificationContext';
+import { Table } from 'react-bootstrap';
 
 const DisplayBlogs = () => {
   const navigate = useNavigate();
@@ -30,8 +31,8 @@ const DisplayBlogs = () => {
   const updateBlogMutation = useUpdateBlog();
   const deleteBlogMutation = useDeleteBlog();
 
-//   Get queryClient to invalidate and refresh queries
-const queryClient = new QueryClient()
+  //   Get queryClient to invalidate and refresh queries
+  const queryClient = new QueryClient();
 
   // Effect to check if user is logged in
   useEffect(() => {
@@ -43,7 +44,7 @@ const queryClient = new QueryClient()
         console.log('Parsed user:', user); // Log the parsed user object
         login(user);
         blogService.setToken(user.token);
-        navigate('/blogs') // If user logged in navigate to /blogs
+        navigate('/blogs'); // If user logged in navigate to /blogs
       } catch (error) {
         console.error('Error parsing JSON:', error);
       }
@@ -127,7 +128,7 @@ const queryClient = new QueryClient()
     }
   };
 
-//   Handle updating -> blog likes increment
+  //   Handle updating -> blog likes increment
   const handleUpdateBlog = (blog) => {
     const updatedBlog = { ...blog, likes: blog.likes + 1 };
     updateBlogMutation.mutate(
@@ -138,7 +139,7 @@ const queryClient = new QueryClient()
             message: 'Blog likes updated successfully',
             type: 'success',
           });
-          queryClient.invalidateQueries('blogs')
+          queryClient.invalidateQueries('blogs');
         },
         onError: () => {
           notify({ message: 'Failed to update blog likes', type: 'error' });
@@ -156,6 +157,7 @@ const queryClient = new QueryClient()
 
   return (
     <div>
+      <br />
       {user && (
         <Togglable buttonLabel="new blog" ref={blogFormRef}>
           <BlogForm
@@ -165,17 +167,23 @@ const queryClient = new QueryClient()
           />
         </Togglable>
       )}
-      <div>
-        <br />
-        {sortedBlogs.map((blog) => (
-          <Blog
-            key={blog.id}
-            blog={blog}
-            handleLike={() => handleUpdateBlog(blog)}
-            handleDelete={() => handleDeleteBlog(blog.id)}
-          />
-        ))}
-      </div>
+      <br />
+      <Table striped bordered hover>
+        <tbody>
+          {sortedBlogs.map((blog) => (
+            <tr key={blog.id}>
+              <td>
+                <Blog
+                  key={blog.id}
+                  blog={blog}
+                  handleLike={() => handleUpdateBlog(blog)}
+                  handleDelete={() => handleDeleteBlog(blog.id)}
+                />
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </Table>
     </div>
   );
 };
