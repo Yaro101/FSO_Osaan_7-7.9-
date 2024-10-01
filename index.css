@@ -38,6 +38,7 @@ button:focus-visible {
 
 /* Navbar */
 header nav {
+  background-color: #79eaee11;
   display: flex;
   height: auto;
   gap: 16px;
@@ -63,7 +64,7 @@ header nav a.active {
 
 header nav .loginStatus {
   padding: 8px;
-  margin-top: auto;
+  /* margin-top: auto; */
 }
 
 .users-table{
