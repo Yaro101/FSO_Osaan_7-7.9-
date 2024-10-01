@@ -3,7 +3,7 @@ import LoginStatus from '../components/LoginStatus';
 
 const Layout = () => {
   return (
-    <div>
+    <div className="container">
       <header>
         <nav>
           <h1>Blog App</h1>
