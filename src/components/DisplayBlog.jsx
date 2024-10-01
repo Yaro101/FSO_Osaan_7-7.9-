@@ -32,7 +32,7 @@ const DisplayBlog = () => {
         {blog.title} by {blog.author}{' '}
       </h2>
       <div>
-        <p><a href={blog.url}>{blog.url}</a></p>
+        <p><a href={blog.url} target="_blank" rel="noopener noreferrer">{blog.url}</a></p>
         <div>
           Likes <span className="like-count">{blog.likes}</span>{' '}
           <button className="like-btn" onClick={handleLike}>
