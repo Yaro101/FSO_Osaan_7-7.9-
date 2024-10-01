@@ -66,7 +66,7 @@ const LoginStatus = () => {
   }
   //   If user is logged in show logout button and status
   return (
-    <div>
+    <div className='loginStatus'>
       <p>
         <em>
           <strong>{user.name}</strong>
