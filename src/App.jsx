@@ -28,6 +28,7 @@ import '../index.css';
 import Layout from './views/Layout';
 import DisplayUsers from './components/DisplayUsers';
 import DisplayUser from './components/DisplayUser';
+import DisplayBlog from './components/DisplayBlog';
 
 const queryClient = new QueryClient();
 
@@ -38,6 +39,7 @@ const router = createBrowserRouter(
       <Route path="users" element={<DisplayUsers />} />
       <Route path="blogs" element={<DisplayBlogs />} />
       <Route path="users/:userId" element={<DisplayUser />} />
+      <Route path="blogs/:blogId" element={<DisplayBlog />} />
     </Route>
   )
 );
