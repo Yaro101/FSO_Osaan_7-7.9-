@@ -17,7 +17,7 @@ import { useNotification } from '../context/NotificationContext';
 
 const DisplayBlogs = () => {
   const navigate = useNavigate();
-  const { user, login, logout } = useUser(); // Get user state and functions from UserContext
+  const { user, login } = useUser(); // Get user state and functions from UserContext
   const { notify } = useNotification(); // Use notification context
   const blogFormRef = useRef();
   const [newBlog, setNewBlog] = useState({ title: '', author: '', url: '' });
