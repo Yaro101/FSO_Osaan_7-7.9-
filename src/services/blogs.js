@@ -39,8 +39,16 @@ const remove = async (id) => {
 };
 
 const addComment = async (id, comment) => {
-    const response = await axios.post(`${baseUrl}/${id}/comments`, { comment })
-    return response.data
+    // Fetch the specific blog
+    const blogResponse = await axios.get(`${baseUrl}/${id}`)
+    const blogToAddComment = blogResponse.data // Getting the blog data
+    if (blogToAddComment) {
+        blogToAddComment.comments = blogToAddComment.comments || [] // initialize if undefined
+        blogToAddComment.comments.push(comment)
+        const response = await axios.put(`${baseUrl}/${id}`, blogToAddComment)
+        return response.data
+    }
+    throw new Error('Bolg not found')
 }
 
 export default { getAll, create, update, remove, setToken, addComment };
